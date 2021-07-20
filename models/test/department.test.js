@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 describe('Department model', () => {
 
   it('should throw an error if no "name" arg', () => {
-    const dep = new Department({}); // create new Department, but don't set `name` attr value
+    const dep = new Department({});
 
     dep.validate(err => {
       expect(err.errors.name).to.exist;
@@ -36,7 +36,6 @@ describe('Department model', () => {
       });
   
     }
-  
   });
 
   it('should not throw an error if "name" is correct', () => {
@@ -52,8 +51,10 @@ describe('Department model', () => {
     }
   
   });
+
+  after(() => {
+    mongoose.models = {};
+  });
+
 });
 
-after(() => {
-  mongoose.models = {};
-});

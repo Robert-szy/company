@@ -60,7 +60,6 @@ exports.putId = async (req, res) => {
 };
 
 exports.deleteId = async (req, res) => {
-  const { name } = req.body;
   try {
     const dep = await(Department.findById(req.params.id));
     if(dep) {
