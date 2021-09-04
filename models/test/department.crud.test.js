@@ -1,4 +1,4 @@
-const Department = require('../department.model');
+const Department = require('../department.model.js');
 const expect = require('chai').expect;
 const MongoMemoryServer = require('mongodb-memory-server').MongoMemoryServer;
 const mongoose = require('mongoose');
@@ -6,9 +6,11 @@ const mongoose = require('mongoose');
 describe('Department', () => {
   before(async () => {
     try {
-      const fakeDB = new MongoMemoryServer();
-      const uri = await fakeDB.getUri();
-      mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+      //const fakeDB = new MongoMemoryServer();
+      //const uri = await fakeDB.getUri();
+      //mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+      await mongoose.connect('mongodb://localhost:27017/companyDBtest', { useNewUrlParser: true, useUnifiedTopology: true });
+
     } catch(err) {
       console.log(err);
     }
