@@ -44,4 +44,5 @@ describe('GET /api/departments', () => {
     expect(res.body).to.be.an('object');
     expect(res.body).to.not.be.null;
   });
+  
 });
